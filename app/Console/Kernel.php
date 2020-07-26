@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         $day = $settings->date_send_messages ?? 28;
         $schedule->call(function () {
             sendMessage::dispatch();
-        })->dailyAt($day, '17:00');
+        })->monthlyOn($day, '17:00');
     }
 
     /**
