@@ -1,6 +1,81 @@
 @extends('layouts.main',['title' => '' , 'js'=>'home'])
 @section('content')
+    <style>
+        .paid {
+            color: #4caf50;
+            display: inline-block;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 7px 12px;
+            font-size: 13px;
+            line-height: 1.5384616;
+            border-radius: 3px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <div class="col-lg-12">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title">.</h6>
 
+                <div class="heading-elements">
+
+                    <span class="heading-text">الأخبار والاعلانات</span>
+
+                </div>
+
+
+            </div>
+            <div class="panel-body">
+                    @foreach($posts as $post)
+                        @if($loop->index % 6 == 0)  <div class="row"> @endif
+                        <div class="col-md-2" style="margin-bottom: 10px;">
+
+                            <div class="card" style="text-align:center;width: 18rem;box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                             {{ $loop->index % 2 == 0 ? 'background: #f5f5f5' : 'background: #fdfcfc' }};
+    padding: 9px;border: 1px solid #e2e2e2;
+    border-radius: 8px;">
+                                <a href="{{route('post.show',$post)}}">
+                                    <img src="{{\Illuminate\Support\Facades\Storage::url($post->image)}}"
+                                         style="height: 140px" class="img-thumbnail card-img-top"
+                                         alt="{{$post->title ?? ''}}">
+                                </a>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title" style="font-size: 12px;">{{$post->title ?? ''}}</h5>
+                                    <span>
+                                        @if($post->status == 1)
+                                            <a href="#" route="{{route('post.reserve',$post)}}"
+                                               style="border-radius: 10px"
+                                               class="btn btn-success  reserve-post-btn mb-5">حجز الأن</a>
+                                        @elseif($post->status == 2)
+                                            <span
+                                                style="border-radius: 10px"
+                                                class="btn btn-light   mb-5">تم حجزه</span>
+                                        @else
+                                            <span
+                                                style="border-radius: 10px"
+                                                class="paid  mb-5">تم شراءه</span>
+                                        @endif
+                                            </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        @if($loop->index % 6 == 5)  </div> @endif
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Main charts -->
     <div class="col-lg-12">
         <div class="panel panel-flat">
@@ -21,7 +96,9 @@
             <div class="panel-body" style="text-align: center">
                 <h2>مرحبا بكم في موقع</h2>
                 <h1 style="    font-size: 3em;font-weight: bold;color: #4caf50;">{{ session()->get('app_name') }}</h1>
-                @if(session()->get('app_logo') != '') <img width="100" style="border-radius: 10px" src="{{ env('APP_URL').'/public/storage/'.session('app_logo') }}" alt=""> @endif
+                @if(session()->get('app_logo') != '') <img width="100" style="border-radius: 10px"
+                                                           src="{{ env('APP_URL').'/public/storage/'.session('app_logo') }}"
+                                                           alt=""> @endif
 
             </div>
             <div class="table-responsive">
@@ -91,10 +168,12 @@
                                                 <select disabled="disabled" name="gender" id="gender"
                                                         class="form-control gender">
                                                     @if($visibility->gender == null)
-                                                        <option value="ذكر" {{ $item->gender == 'ذكر' ? 'selected' : '' }} >
+                                                        <option
+                                                            value="ذكر" {{ $item->gender == 'ذكر' ? 'selected' : '' }} >
                                                             ذكر
                                                         </option>
-                                                        <option value="أنثى" {{ $item->gender == 'أنثى' ? 'selected' : '' }}>
+                                                        <option
+                                                            value="أنثى" {{ $item->gender == 'أنثى' ? 'selected' : '' }}>
                                                             أنثى
                                                         </option>
                                                     @else
@@ -151,10 +230,12 @@
                                                         id="orphan_health_state"
                                                         class="form-control orphan_health_state">
                                                     @if($visibility->orphan_health_state == null)
-                                                        <option value="نعم" {{ $item->orphan_health_state == 'مريض' ? 'selected' : '' }} >
+                                                        <option
+                                                            value="نعم" {{ $item->orphan_health_state == 'مريض' ? 'selected' : '' }} >
                                                             مريض
                                                         </option>
-                                                        <option value="لا" {{ $item->orphan_health_state == 'سليم' ? 'selected' : '' }}>
+                                                        <option
+                                                            value="لا" {{ $item->orphan_health_state == 'سليم' ? 'selected' : '' }}>
                                                             غير مريض
                                                         </option>
                                                     @else

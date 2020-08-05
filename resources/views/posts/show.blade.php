@@ -1,4 +1,4 @@
-@extends('layouts.main',['title' => 'تعديل خبر' , 'js'=>'liven'])
+@extends('layouts.main',['title' => 'عرض خبر' , 'js'=>'liven'])
 
 @section('content')
     {{--for validation errors--}}
@@ -26,66 +26,59 @@
                 <a href="#" class="blockMe" style="display: none"></a>
                 <div class="panel panel-flat" id="table-block">
                     <div class="panel-heading">
-                        <h5 class="panel-title">تعديل خبر</h5>
 
                     </div>
 
                     <div class="panel-body">
 
+
+
                         <div class="form-group">
-                            <label class="col-lg-2 control-label">العنوان:</label>
-                            <div class="col-lg-5">
-                                <input type="text" name="title" class="title form-control " value="{{$post->title ?? ''}}"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">صورة الخبر:</label>
-                            <div class="col-lg-5">
-                                <input type="file" name="image" class="file-input" data-show-caption="false" data-show-upload="false" data-fouc>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-2 control-label">المحتوى:</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control editor" id="editor" name="description">{{$post->content ?? ''}}</textarea>
+                            <div class="col-lg-12">
+                            {!! $post->content ?? '' !!}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">اليتيم:</label>
                             <div class="col-lg-5">
-                                <select name="orphan_id" id="orphan_id" class="form-control orphan_id">
-                                    <option value="" {{$post->orphan_id == '' ? 'selected' : ''}} >بلا يتيم</option>
-                                    @foreach($orphan as $item)
-                                    <option value="{{$item->id}}" {{$post->orphan_id == $item->id ? 'selected' : ''}}   >{{$item->name}}</option>
-                                    @endforeach
-                                </select>
+                                {{$post->orphan->name ?? '--'}}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-2 control-label">الكافل:</label>
                             <div class="col-lg-5">
-                                <select name="sponsor_id" id="sponsor_id" class="form-control sponsor_id">
-                                    <option value="" selected>الكل</option>
-                                    @foreach($sponsor as $item)
-                                    <option value="{{$item->id}}" {{$post->sponsor_id == $item->id ? 'selected' : ''}}  >{{$item->name}}</option>
-                                    @endforeach
-                                </select>
+                                {{$post->sponsor->name ?? '--'}}
+                            </div>
+                        </div>
+
+                        <div class="text-right">
+                            @if($post->status == 1 or $post->status == 0)
+                                <a href="#" route="{{route('post.reserve',$post)}}"
+                                   style="border-radius: 3px"
+                                   class="btn btn-success  reserve-post-btn mb-5">حجز الأن</a>
+                            @elseif($post->status == 2)
+                                <span
+                                    style="border-radius: 3px"
+                                    class="btn btn-light   mb-5">تم حجزه</span>
+                            @else
+                                <span
+                                    style="border-radius: 3px"
+                                    class="paid  mb-5">تم شراءه</span>
+                            @endif
+
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <span>
+
+                                            </span>
                             </div>
                         </div>
 
 
 
 
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary " id="add-button">
-                                <i class=" icon-floppy-disk position-right" style="margin-top: 2px"></i>
-                                حفظ التغييرات
-                                <i class="icon-spinner2 spinner position-left hide loader"
-                                   style="margin-top: 3px;float: left;"></i>
-                            </button>
-
-
-                        </div>
                     </div>
                 </div>
             </form>
@@ -101,109 +94,7 @@
 @endsection
 
 @section('js_code')
-    <script>
-        Array.prototype.remove = function() {
-            var what, a = arguments, L = a.length, ax;
-            while (L && this.length) {
-                what = a[--L];
-                while ((ax = this.indexOf(what)) !== -1) {
-                    this.splice(ax, 1);
-                }
-            }
-            return this;
-        };
-        var modalTemplate = '<div class="modal-dialog modal-lg" role="document">\n' +
-            '  <div class="modal-content">\n' +
-            '    <div class="modal-header align-items-center">\n' +
-            '      <h6 class="modal-title">{heading} <small><span class="kv-zoom-title"></span></small></h6>\n' +
-            '      <div class="kv-zoom-actions btn-group">{toggleheader}{fullscreen}{borderless}{close}</div>\n' +
-            '    </div>\n' +
-            '    <div class="modal-body">\n' +
-            '      <div class="floating-buttons btn-group"></div>\n' +
-            '      <div class="kv-zoom-body file-zoom-content"></div>\n' + '{prev} {next}\n' +
-            '    </div>\n' +
-            '  </div>\n' +
-            '</div>\n';
 
-        // Buttons inside zoom modal
-        var previewZoomButtonClasses = {
-            toggleheader: 'btn btn-light btn-icon btn-header-toggle btn-sm',
-            fullscreen: 'btn btn-light btn-icon btn-sm',
-            borderless: 'btn btn-light btn-icon btn-sm',
-            close: 'btn btn-light btn-icon btn-sm'
-        };
-
-        // Icons inside zoom modal classes
-        var previewZoomButtonIcons = {
-            prev: '<i class="icon-arrow-left32"></i>',
-            next: '<i class="icon-arrow-right32"></i>',
-            toggleheader: '<i class="icon-menu-open"></i>',
-            fullscreen: '<i class="icon-screen-full"></i>',
-            borderless: '<i class="icon-alignment-unalign"></i>',
-            close: '<i class="icon-cross2 font-size-base"></i>'
-        };
-
-        // File actions
-        var fileActionSettings = {
-            zoomClass: '',
-            zoomIcon: '<i class="icon-zoomin3"></i>',
-            dragClass: 'p-2',
-            dragIcon: '<i class="icon-three-bars"></i>',
-            removeClass: '',
-            removeErrorClass: 'text-danger',
-            indicatorNew: '<i class="icon-file-plus text-success"></i>',
-            indicatorSuccess: '<i class="icon-checkmark3 file-icon-large text-success"></i>',
-            indicatorError: '<i class="icon-cross2 text-danger"></i>',
-            indicatorLoading: '<i class="icon-spinner2 spinner text-muted"></i>'
-        };
-
-        var options = {
-            browseLabel: 'Browse',
-            browseIcon: '<i class="icon-file-plus mr-2"></i>',
-            uploadIcon: '<i class="icon-file-upload2 mr-2"></i>',
-            removeIcon: '<i class="icon-cross2 font-size-base mr-2"></i>',
-            layoutTemplates: {
-                icon: '<i class="icon-file-check"></i>',
-                modal: modalTemplate
-            },
-
-            initialPreviewAsData: true,
-            initialCaption: "No file selected",
-            allowedFileExtensions: ["jpg", "gif", "png"],
-            previewZoomButtonClasses: previewZoomButtonClasses,
-            previewZoomButtonIcons: previewZoomButtonIcons,
-            fileActionSettings: fileActionSettings
-        };
-        var options = {
-            browseLabel: 'Browse',
-            browseIcon: '<i class="icon-file-plus mr-2"></i>',
-            uploadIcon: '<i class="icon-file-upload2 mr-2"></i>',
-            removeIcon: '<i class="icon-cross2 font-size-base mr-2"></i>',
-            layoutTemplates: {
-                icon: '<i class="icon-file-check"></i>',
-                modal: modalTemplate
-            },
-
-            initialPreviewAsData: true,
-            initialCaption: "No file selected",
-            allowedFileExtensions: ["jpg", "gif", "png"],
-            previewZoomButtonClasses: previewZoomButtonClasses,
-            previewZoomButtonIcons: previewZoomButtonIcons,
-            fileActionSettings: fileActionSettings
-        };
-
-
-        @isset($post->image)
-            options['initialPreview'] = [
-            '{{\Illuminate\Support\Facades\Storage::url($post->image)}}',
-        ];
-        options['initialPreviewConfig'] =  [
-            {caption: 'Image',  key: 1, url: '{{\Illuminate\Support\Facades\Storage::url($post->image)}}', showDrag: false},
-        ];
-        @endisset
-        $('.file-input').fileinput(options);
-
-    </script>
     <script>
         CKEDITOR.addCss(
             'html {background: whitesmoke;}' +
@@ -367,7 +258,6 @@
 @endsection
 @section('js_assets')
     <script src="https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>
-    <script src="{{asset('js/plugins/uploaders/fileinput/fileinput.min.js')}}"></script>
 
 
 @endsection

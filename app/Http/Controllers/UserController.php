@@ -6,6 +6,7 @@ use App\Imports\OrphanImport;
 use App\Imports\SponsorImport;
 use App\Jobs\sendMessage;
 use App\OrphanSponsor;
+use App\Post;
 use App\Setting;
 use App\User;
 use App\UserColumnVisibility;
@@ -42,7 +43,10 @@ class UserController extends Controller
             $users = $users->where('id', '=', \auth()->user()->id);
             $users = $users->with('orphans');
             $users = $users->where('role', 'sponsor')->get();
-            return view('home_sponsor',compact('users','visibility','setting'));
+            $posts = Post::wherein('status',[1,2,3])->where((function($query){
+                $query->wherenull('sponsor_id')->orwhere('sponsor_id',\auth()->user()->id);
+            }))->get();
+            return view('home_sponsor',compact('users','visibility','setting','posts'));
         }else if(\auth()->user()->role == 'orphan'){
             $item = User::find(\auth()->user()->id);
             return view('home_orphan',compact('item'));

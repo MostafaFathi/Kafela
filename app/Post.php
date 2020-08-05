@@ -14,16 +14,22 @@ class Post extends Model
     {
         return $this->belongsTo('App\User','sponsor_id');
     }
+    public function sponsor_pay()
+    {
+        return $this->belongsTo('App\User','paid_by_sponsor_id');
+    }
 
     public function getStatusTextAttribute()
     {
         if($this->status == 0){
             return 'جديد';
         }else if($this->status == 1){
-            return 'محجوز';
+            return 'تم نشره';
         }else if($this->status == 2){
-            return 'تم الشراء';
-        }else if($this->status == 2){
+            return 'تم حجزه';
+        }else if($this->status == 3){
+            return 'تم شراءه';
+        }else if($this->status == 4){
             return 'ملغي';
         }
     }

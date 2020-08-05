@@ -12,30 +12,7 @@
     </validation>
     {{--for validation errors--}}
 
-    <div class="panel-body">
-        <form action="" method="get" class="form-horizontal"
-              style="    background: white;padding: 3px;border-radius: 0px;border: 1px solid #eaeaea;">
-            <h5 style="    padding: 10px;">بحث</h5>
-            <div class="form-group">
-                <div class="form-group col-md-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="addon-wrapping">الاسم</span>
-                    </div>
-                    <input type="text" class="form-control" name="name" value="{{request()->get('name')}}"
-                           aria-describedby="addon-wrapping">
-                </div>
-                <div class="form-group col-md-3">
-                    <button class="btn btn-success" style="margin: 19px 0px;" type="submit">
-                        بحث
-                    </button>
 
-                </div>
-
-
-
-            </div>
-        </form>
-    </div>
     <!-- Main charts -->
     <div class="col-lg-12">
         <div class="panel panel-flat">
@@ -52,15 +29,19 @@
                 </div>
             </div>
 
-
+            <style>
+                table th {
+                    font-weight: bold;
+                }
+            </style>
             <div class="table-responsive">
                 <table class="table datatable-basic table-bordered dataTable no-footer" id="requests-table">
                     <thead>
                     <tr>
-                        <th>رقم الخبر</th>
                         <th>العنوان</th>
                         <th>اليتيم</th>
                         <th>الكافل</th>
+                        <th>المشتري</th>
                         <th>حالة الخبر</th>
                         <th>عمليات</th>
                     </tr>
@@ -69,21 +50,65 @@
 
                     @foreach($posts as $key => $item)
                         <tr>
-                            <td class="orphan_file_no">{{ $item->id ?? '' }}</td>
-                            <td class="name">{{ $item->title ?? '' }}</td>
-                            <td class="gender">{{ $item->orphan->name ?? '' }}</td>
-                            <td class="orphan_old_year">{{ $item->sponsor->name ?? '' }}</td>
-                            <td class="mother_name">{{ $item->status_text ?? '' }}</td>
-                            <td class="text-center">
+                            <td class="name" style="max-width: 170px">{{ $item->title ?? '' }}</td>
+                            <td class="gender" style="max-width: 170px">{{ $item->orphan->name ?? 'بلا يتيم' }}</td>
+                            <td class="orphan_old_year" style="max-width: 170px">
 
-                                <a href="{{route('post.edit',[$item])}}" >
-                                    <i class="  icon-pencil7 update-icon"></i>
+                                @if(isset($item->sponsor->name) and $item->sponsor->name != '')
+                                    <a href="#" class="show-item-info"
+                                       ItemId="{{$item->id}}"
+                                       Info="{{$item->sponsor}}"
+                                       fieldNames='{"name":"الاسم","phone":"رقم الجوال","sponsor_file_no":"رقم ملف الكافل"}'>
+                                        @endif
+                                        {{ $item->sponsor->name ?? 'الكل' }}
+                                    </a>
+                            </td>
+                            <td class="" style="max-width: 170px">
+                                <a href="#" class="show-item-info"
+                                   ItemId="{{$item->id}}"
+                                   Info="{{$item->sponsor_pay}}"
+                                   fieldNames='{"name":"الاسم","phone":"رقم الجوال","sponsor_file_no":"رقم ملف الكافل"}'>
+                                    {{ $item->sponsor_pay->name ?? '--' }}
                                 </a>
-                                <a href="#" class="delete-orphan-btn"
-                                   route="{{route('orphan.delete',['id'=>$item->id ?? ''])}}" style="margin: 0px 3px;">
-                                    <i class="  icon-cancel-square delete-icon"
-                                       style=" color: #d84315;font-size: 18px;"></i>
+                            </td>
+                            <td class="status_text">{{ $item->status_text ?? '' }}</td>
+                            <td class="text-center" style="padding: 12px 3px;">
+
+                                <a href="{{route('post.show',$item)}}" class="btn  btn-primary"
+                                   style="font-size: 12px;padding: 3px 7px ">
+                                    عرض
                                 </a>
+                                <a href="{{route('post.edit',[$item])}}" class="btn  btn-warning"
+                                   style="font-size: 12px;padding: 3px 7px ">
+                                    تعديل
+                                </a>
+                                <a href="#" class="delete-post-btn btn btn-danger"
+                                   route="{{route('post.destroy',$item)}}" style="font-size: 12px;padding: 3px 7px">
+                                    حذف
+                                </a>
+                                @if($item->status == 0 or $item->status == 4)
+                                    <a href="#" class="publish-post-btn btn btn-success"
+                                       route="{{route('post.publish',$item)}}" style="font-size: 12px;padding: 3px 7px">
+                                        نشر
+                                    </a>
+                                @endif
+                                @if($item->status == 2)
+                                    <a href="#" class="pay-post-btn btn btn-success"
+                                       route="{{route('post.pay',$item)}}" style="font-size: 12px;padding: 3px 7px">
+                                        تم شراءه
+                                    </a>
+                                    <a href="#" class="cancel-post-btn btn btn-danger"
+                                       route="{{route('post.cancel',$item)}}" style="font-size: 12px;padding: 3px 7px">
+                                        إلغاء
+                                    </a>
+                                @endif
+                                @if($item->status == 1)
+                                    <a href="#" class="cancel-post-btn btn btn-danger"
+                                       route="{{route('post.cancel',$item)}}"
+                                       style="font-size: 12px;padding: 3px 7px;background-color: #E91E63">
+                                        إلغاء
+                                    </a>
+                                @endif
                                 <input type="hidden" name="orphan" class="orphan" value="{{$item->id ?? ''}}"/>
 
                             </td>
@@ -129,7 +154,7 @@
             table.export2file(xlsxData.data, xlsxData.mimeType, xlsxData.filename, xlsxData.fileExtension, xlsxData.merges, xlsxData.RTL, xlsxData.sheetname)
         });
         $(document).on('change', '.delete_all', function () {
-            $('.delete_item').prop('checked',$(this).prop('checked'));
+            $('.delete_item').prop('checked', $(this).prop('checked'));
         });
     </script>
     <!-- Footer -->

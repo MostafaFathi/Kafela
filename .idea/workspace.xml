@@ -2,8 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c22d49b8-bac9-4345-969b-7632ba0b67a3" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/ckeditor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/minified/bootstrap_limitless.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/minified/bootstrap_limitless.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/ck-uploader/adapter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/ck-uploader/simpleupload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/uploaders/fileinput/fileinput.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/uploaders/fileinput/plugins/piexif.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/uploaders/fileinput/plugins/purify.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/uploaders/fileinput/plugins/sortable.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/require.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/posts/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_08_111123_create_posts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_08_111123_create_posts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/minified/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/minified/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/minified/components.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/minified/components.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/liven.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/liven.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home_sponsor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home_sponsor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/posts/manage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/posts/manage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +43,14 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,20 +160,29 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/posts" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/old-grgate" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../../../Program Files/nodejs/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.phpunit" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\aytam\public\css\minified" />
+      <recent name="C:\laragon\www\aytam\public\js\plugins\uploaders" />
       <recent name="C:\laragon\www\aytam\resources\views\posts" />
+      <recent name="C:\laragon\www\aytam\public\js\plugins\ck-uploader" />
       <recent name="C:\laragon\www\aytam\resources\views\auth" />
-      <recent name="C:\laragon\www\aytam\resources\views" />
-      <recent name="C:\laragon\www\aytam\resources\views\settings" />
-      <recent name="C:\laragon\www\aytam\resources\views\sponsor" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="npm run watch" />
+      <command value="npm run dev" />
+      <command value="npm run production" />
+    </option>
+  </component>
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
@@ -149,6 +196,43 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="production" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="production" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.production" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.watch" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -195,7 +279,13 @@
       <workItem from="1594796360690" duration="23000" />
       <workItem from="1594804792848" duration="557000" />
       <workItem from="1595335442411" duration="2373000" />
-      <workItem from="1595755783025" duration="1111000" />
+      <workItem from="1595755783025" duration="1741000" />
+      <workItem from="1595761295235" duration="217000" />
+      <workItem from="1595846172778" duration="11332000" />
+      <workItem from="1596008632367" duration="8261000" />
+      <workItem from="1596398913843" duration="20884000" />
+      <workItem from="1596540161513" duration="691000" />
+      <workItem from="1596616227326" duration="72000" />
     </task>
     <servers />
   </component>
@@ -207,13 +297,49 @@
       <screen x="0" y="0" width="1366" height="736" />
     </state>
     <state x="413" y="122" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.736@0.0.1366.736" timestamp="1594196671071" />
+    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1596530704273">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.736@0.0.1366.736" timestamp="1596530704273" />
+    <state x="129" y="55" key="DiffContextDialog" timestamp="1596528745474">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="129" y="55" key="DiffContextDialog/0.0.1366.736@0.0.1366.736" timestamp="1596528745474" />
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1596611633828">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.736@0.0.1366.736" timestamp="1596611633828" />
+    <state width="661" height="181" key="GridCell.Tab.0.bottom" timestamp="1595924855638">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="661" height="181" key="GridCell.Tab.0.bottom/0.0.1366.736@0.0.1366.736" timestamp="1595924855638" />
+    <state width="661" height="181" key="GridCell.Tab.0.center" timestamp="1595924855637">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="661" height="181" key="GridCell.Tab.0.center/0.0.1366.736@0.0.1366.736" timestamp="1595924855637" />
+    <state width="661" height="181" key="GridCell.Tab.0.left" timestamp="1595924855637">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="661" height="181" key="GridCell.Tab.0.left/0.0.1366.736@0.0.1366.736" timestamp="1595924855637" />
+    <state width="661" height="181" key="GridCell.Tab.0.right" timestamp="1595924855638">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="661" height="181" key="GridCell.Tab.0.right/0.0.1366.736@0.0.1366.736" timestamp="1595924855638" />
     <state x="518" y="291" key="NewPhpFileDialog" timestamp="1591627952057">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
     <state x="518" y="291" key="NewPhpFileDialog/0.0.1366.736@0.0.1366.736" timestamp="1591627952057" />
-    <state x="346" y="57" width="672" height="678" key="search.everywhere.popup" timestamp="1595335863197">
+    <state x="507" y="70" key="RollbackChangesDialog" timestamp="1596447575059">
       <screen x="0" y="0" width="1366" height="736" />
     </state>
-    <state x="346" y="57" width="672" height="678" key="search.everywhere.popup/0.0.1366.736@0.0.1366.736" timestamp="1595335863197" />
+    <state x="507" y="70" key="RollbackChangesDialog/0.0.1366.736@0.0.1366.736" timestamp="1596447575059" />
+    <state x="339" y="164" width="672" height="677" key="run.anything.popup" timestamp="1595854508845">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="339" y="164" width="672" height="677" key="run.anything.popup/0.0.1366.736@0.0.1366.736" timestamp="1595854508845" />
+    <state x="346" y="57" width="672" height="678" key="search.everywhere.popup" timestamp="1596017753338">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="346" y="57" width="672" height="678" key="search.everywhere.popup/0.0.1366.736@0.0.1366.736" timestamp="1596017753338" />
   </component>
 </project>

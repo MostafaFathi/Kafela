@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" id="csrf-token-public" content="{{ csrf_token() }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <title class="title-home">{{ session()->get('app_name') }}</title>
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('css/minified/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/minified/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ar_css/bootstrap-rtl.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ar_css/ar.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/ar_css/bootstrap-flipped.min.css') }}" rel="stylesheet" type="text/css">
@@ -61,7 +64,7 @@
     <script type="text/javascript" src="{{asset('js/plugins/xlsx.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins/fileSaver.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins/tableexport.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/liven.js?update=12345678')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/liven.js?update=123456789')}}"></script>
 
 
 
@@ -95,18 +98,11 @@
         <ul class="nav navbar-nav navbar-right float-left margin-left-20 my-nav-bar" style="">
 
 
-            </li>
 
 
             <li class="dropdown dropdown-user">
                 <a class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="
-@if(Auth::user()->img != 'default_user.png')
-{{  asset('uploads/users/'.Auth::user()->img) }}
-@else
-{{  asset('images/'.Auth::user()->img) }}
-@endif
-" alt="">
+                    <img src="{{  asset('images/default_user.png') }}" alt="">
                     <span>{{ Auth::user()->name }}</span>
                     <i class="caret"></i>
                 </a>
@@ -151,13 +147,7 @@
                 <div class="sidebar-user">
                     <div class="category-content">
                         <div class="media">
-                            <a href="#" class="media-left"><img src="
-@if(Auth::user()->img != 'default_user.png')
-{{  asset('uploads/users/'.Auth::user()->img) }}
-@else
-{{  asset('images/'.Auth::user()->img) }}
-@endif
-" class="img-circle img-sm" alt=""></a>
+                            <a href="#" class="media-left"><img src="{{  asset('images/default_user.png') }}" class="img-circle img-sm" alt=""></a>
                             <div class="media-body">
                                 <span class="media-heading text-semibold">{{ Auth::user()->name }}</span>
                                 <div class="text-size-mini text-muted" style="color: rgb(78, 78, 78) !important;">

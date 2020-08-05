@@ -73,11 +73,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/messages/store', 'HomeController@messages_store')->name('message.store');
     Route::post('/message/send/pay/store', 'HomeController@messages_send_pay_store')->name('message.send.pay.store');
     Route::get('/send/message/manually', 'UserController@send_message_manually')->name('send.message.manually');
-    Route::post('ck_upload_image', 'HomeController@ck_upload_image')->name('ck_upload_image');
+    Route::post('uploadPostImages', 'PostController@uploadPostImages')->name('uploadPostImages');
+    Route::post('uploadPostImages?responseType=json', 'PostController@uploadPostImages')->name('uploadPostImages');
 
     Route::resources([
         'post' => 'PostController',
     ]);
+    Route::post('post/{post}/update','PostController@update')->name('post.update');
+    Route::get('post/delete/{post}','PostController@destroy')->name('post.destroy');
+    Route::get('post/publish/{post}','PostController@publish')->name('post.publish');
+    Route::get('post/show/{post}','PostController@show')->name('post.show');
+
+    Route::get('post/reserve/{post}','PostController@reserve')->name('post.reserve');
+    Route::get('post/pay/{post}','PostController@pay')->name('post.pay');
+    Route::get('post/cancel/{post}','PostController@cancel')->name('post.cancel');
 
     Route::post('/logout',function(){
         Auth::logout();
